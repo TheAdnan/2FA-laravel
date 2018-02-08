@@ -1,6 +1,5 @@
 <?php
-if(!isset($enter_token))
-    $enter_token = false;
+if(!isset($enter_token)) $enter_token = false;
 ?>
 @extends('layouts.app')
 
@@ -9,7 +8,7 @@ if(!isset($enter_token))
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="alert alert-warning">
-                    <?= $error ?>
+                    {{ $error }}
                 </div>
             </div>
         </div>

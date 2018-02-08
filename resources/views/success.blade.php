@@ -1,6 +1,5 @@
 <?php
-    if(!isset($enter_token))
-        $enter_token = false;
+    if(!isset($enter_token)) $enter_token = false;
 ?>
 @extends('layouts.app')
 
