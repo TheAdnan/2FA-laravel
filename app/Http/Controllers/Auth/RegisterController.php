@@ -88,14 +88,14 @@ class RegisterController extends Controller
             'sms_token' => $sms_code,
             'authenticated' => 0
         ]);
-
     }
 
     public function register(Req $request)
     {
         $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
+
+        $request->session()->put('user_id', $user->id);
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());

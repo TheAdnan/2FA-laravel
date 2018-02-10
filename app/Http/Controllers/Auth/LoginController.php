@@ -52,7 +52,8 @@ class LoginController extends Controller
     public function authenticate(Request $request, $code){
         $user = User::where('code', $code)->first();
         $enter_token = false;
-        if($user){
+        $user_id = $request->session()->get('user_id');
+        if($user && ($user_id === $user->id)){
             $user->code = '';
             $user->authenticated = 1;
             if($user->save()){
@@ -83,7 +84,9 @@ class LoginController extends Controller
         if(null !== $request->input('sms_token')){
             $code = $request->input('sms_token');
             $user = User::where('sms_token', $code)->first();
-            if($user){
+            $user_id = $request->session()->get('user_id');
+            if($user && ($user_id === $user->id)){
+                $request->session()->forget('user_id');
                 $user->sms_token = '';
                 $user->authenticated = 2;
                 if($user->save()){
