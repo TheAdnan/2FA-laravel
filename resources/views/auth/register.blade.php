@@ -43,7 +43,7 @@
                             <label for="phone" class="col-md-4 control-label">Phone number</label>
 
                             <div class="col-md-6">
-                                <input id="phone" class="form-control" name="phone" value="{{ old('phone') }}" required>
+                                <input id="phone" type="tel" class="form-control" name="phone" value="{{ old('phone') }}" required>
 
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
